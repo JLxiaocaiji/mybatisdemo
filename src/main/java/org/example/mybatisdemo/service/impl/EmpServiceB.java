@@ -1,7 +1,7 @@
 package org.example.mybatisdemo.service.impl;
 
 import org.example.mybatisdemo.dao.EmpDao;
-import org.example.mybatisdemo.dao.impl.EmpDaoA;
+//import org.example.mybatisdemo.dao.impl.EmpDaoA;
 import org.example.mybatisdemo.pojo.Emp;
 import org.example.mybatisdemo.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,6 @@
 package org.example.mybatisdemo.controller;
 
+import jakarta.annotation.Resource;
 import org.example.mybatisdemo.pojo.Emp;
 import org.example.mybatisdemo.pojo.Result;
 import org.example.mybatisdemo.service.EmpService;
@@ -50,7 +51,11 @@ public class EmpController {
 
 //    private EmpService empService = new EmpServiceA();
 
-    @Autowired  // 运行时，IOC 容器会提供该类型的 bean 对象，并赋值给该变量 - 依赖注入
+    //    @Qualifier("empServiceA")
+//    @Autowired //运行时, IOC容器会提供该类型的bean对象,并赋值给该变量 - 依赖注入
+//    private EmpService empService ;
+
+    @Resource(name = "empServiceB")  // 运行时，IOC 容器会提供该类型的 bean 对象，并赋值给该变量 - 依赖注入
     private EmpService empService;
 
     @RequestMapping("/listEmp")

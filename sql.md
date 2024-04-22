@@ -42,7 +42,7 @@ update tb_emp set entrydate = '2010-01-01', update_time = now();
 delete from 表名 [where 条件]; 若没有条件语句会全部删除
 
 ##### 6.查询
-* select 字段列表 from 表名列表 where 条件列表 group by 分组字段列表 having 分组后条件列表 order by 排序字段列表 limit 分页参数
+* select 字段列表 from 表名列表 where 条件列表 group by 分组字段列表 having 分组后条件列表 order by 排序字段列表 limit 分页参数1, 分页参数2
 
 1.查询多个字段：select  字段1, 字段2, 字段3  from   表名;
 2.查询所有字段（通配符）：select  *  from   表名;
@@ -59,5 +59,16 @@ where与having区别
 2.判断条件不同：where不能对聚合函数进行判断，而having可以。
 
 
-分页查询：select  字段列表  from   表名  limit  起始索引, 查询记录数
+分页查询：select  字段列表  from  表名  limit  起始索引, 查询记录数
 
+##### sql 条件判断
+1. 单条件判断 https://blog.csdn.net/Senye_ing/article/details/131833161
+if( condition, value_if_true, value_if_false): (条件参数，条件为真返回的值, 条件为假返回的值)
+
+select if ( gender = 1, '男性员工', '女性员工') as 性别, count(*) from tb_emp group by gender;
+
+2. 多条件判断
+select
+( case job when 1 then '班主任' when 2 then
+'讲师' when 3 then '学工主管' when 4 then '教研主管'
+else '未分配职位' end) 职位, count(*) from tb_emp group by job;

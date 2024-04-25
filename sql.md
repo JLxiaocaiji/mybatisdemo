@@ -72,3 +72,45 @@ select
 ( case job when 1 then '班主任' when 2 then
 '讲师' when 3 then '学工主管' when 4 then '教研主管'
 else '未分配职位' end) 职位, count(*) from tb_emp group by job;
+
+##### 数据库 1 对 多的实现
+‘一’对’多‘关系实现：在数据库表中多的一方，添加字段，来关联 ‘一’ 的一方的主键;
+
+##### 数据库多表问题
+例：部门数据可以直接删除，但还有部分员工属于该部门下，产生数据不完整，不一致的问题；
+原因：2张表在数据库层面未建立联系，无法保证数据的一致性和完整行；
+解决办法：创建外键
+1. 新建表时添加外键
+create table 表名(
+    字段名 数据类型 comment,
+    ...,
+    [constraint] [外键名称] foreign key (外键字段名称) references 主表 (字段名)
+);
+示例：
+```
+create table tb_user_card(
+    user_id int unsigned not null unique comment '用户ID',
+    constraint fk_user_id foreign key (user_id) references tb_user(id)
+) comment '用户信息表';
+```
+
+
+2. 建表完后添加外键
+alter table 表名 add constraint 外键名称 foreign key (外键字段名) references 主表(字段名);
+示例：
+```
+alter table tb_dept
+   add constraint tb_emp_fk_dept_id
+   foreign key (dept_id) references tb_dept (id);
+```
+
+
+##### 一对一
+关系：1对1关系，产用于单表拆分，将一张表的基础字段放在一张表中，其他字段放在另一张表中，以提升效率;
+实现：在任意一方加入外键，关联另外一方的主键，且设置外键为唯一 unique,
+
+##### 多对多
+关系：1个学生可以选修多门，一门课程也可供多个学生选择
+实现：建立第三章中间表，中间表至少包含2个外键，分别关联2方主键
+例子：
+

@@ -26,7 +26,7 @@ class MybatisDemoApplicationTests {
     @Test
     public void testListUser() {
         List<User> userList = userMapper.list();
-        userList.stream().forEach( user -> {
+        userList.stream().forEach(user -> {
             System.out.println(user);
         });
     }

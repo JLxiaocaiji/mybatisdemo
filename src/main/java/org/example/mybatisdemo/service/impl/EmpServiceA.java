@@ -22,16 +22,16 @@ public class EmpServiceA implements EmpService {
         List<Emp> empList = empDao.listEmp();
 
         empList.stream().forEach( emp -> {
-            String gender = emp.getGender();
+            Short gender = emp.getGender();
             if ( "1".equals("gender")){
-                emp.setGender("男");
+                emp.setGender(Short.parseShort("男"));
             } else if("2".equals("gender")) {
-                emp.setGender("女");
+                emp.setGender(Short.parseShort("女"));
             }
 
-            String job = emp.getJob();
+            Short job = emp.getJob();
             if ("1".equals(job)) {
-                emp.setJob("讲师");
+                emp.setJob();
             } else if ("2".equals(job)) {
                 emp.setJob("班主任");
             } else if ("2".equals(job)) {

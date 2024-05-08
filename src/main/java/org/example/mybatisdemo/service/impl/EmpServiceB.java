@@ -22,7 +22,7 @@ public class EmpServiceB implements EmpService {
         List<Emp> empList = empDao.listEmp();
 
         empList.stream().forEach( emp -> {
-            String gender = emp.getGender();
+            Short gender = emp.getGender();
             if ( "1".equals("gender")){
                 emp.setGender("男士");
             } else if("2".equals("gender")) {

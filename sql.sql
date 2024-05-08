@@ -516,3 +516,7 @@ select dish.name, dish.price from dish where dish.price < (select avg(dish.price
 -- 主键字段，在建表时，会自动创建主键索引.
 -- 添加唯一约束时，数据库实际上会添加唯一索引.
 -- MySQL数据库中默认的索引结构是 B+tree.
+
+-- JDBC java database connectivity
+
+-- 数据库连接池是一个容器，负责分配，管理数据库的连接(connection),允许重复使用一个现有的数据库连接;

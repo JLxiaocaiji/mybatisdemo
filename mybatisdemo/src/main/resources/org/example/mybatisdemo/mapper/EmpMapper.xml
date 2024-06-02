@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mybatisdemo.mapper.EmpMapper">
+<!--    resultType 单条记录所封装的类型-->
+    <select id="selectBlog" resultType="Blog">
+        select * from Blog where id = #{id}
+    </select>
+</mapper>
+
+<!--动态 sql-->
+<select id="list" resultType="org.example.mybatisdemo.pojo.Emp">
+    select * from emp where
+        <if test="name != null">
+            name like concat('%', #{name}, '%')
+        </if>
+        <if test="gender != null">
+            and gender = #{gender}
+        </if>
+        <if test="begin != null and end != null">
+            and entrydate between #{begin} and #{end}
+        </if>
+        and entrydate bewteen #{begin} and #{end}
+</select>
+
+
+<!--mybatis在 xml 中的动态sql: https://mybatis.net.cn/dynamic-sql.html-->
+
+<!--mybatis sql复用 https://mybatis.net.cn/sqlmap-xml.html-->
+<sql id="commonSelect">
+    select id, username, password, name, gender, image, job, entrydate, dept_id,
+           create_time, update_time from emp;
+</sql>
+
+<select id="list" resultType="org.example.mybatisdemo.pojo.Emp">
+    <include refid="commonSelect" />
+    <where>
+        <if test="name != null">
+            name like concat('%', #{name}, '%')
+        </if>
+        <if test="gender != null">
+            and gender = #{gender}
+        </if>
+        <if test="begin != null and end != null">
+            and entrydate between #{begin} and #{end}
+        </if>
+        order by update_time desc;
+    </where>
+</select>

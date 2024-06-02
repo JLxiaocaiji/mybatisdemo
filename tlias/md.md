@@ -1,0 +1,4 @@
+- controller: 控制层，存放控制器 controller，接收前端发送的请求，对请求进行处理，响应数据;
+- service: 业务层，处理业务逻辑，存放业务代码；
+- dao/mapper: 持久层/数据访问层，存放 mybatis 的 mapper 接口,访问数据库;
+- pojo： 存放实体类

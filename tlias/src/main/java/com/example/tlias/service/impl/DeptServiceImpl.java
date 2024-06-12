@@ -6,6 +6,8 @@ import com.example.tlias.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 // dept service 实现类, 实现 接口 DeptService 的具体方法
@@ -19,5 +21,17 @@ public class DeptServiceImpl implements DeptService {
     @Override
     public List<Dept> list() {
         return deptMapper.list();
+    }
+
+    @Override
+    public void delete(Integer id) {
+        deptMapper.deleteById(id);
+    }
+
+
+    public void add( Dept dept) {
+        dept.setCreateTime(LocalDateTime.now());
+        dept.setUpdateTime(LocalDateTime.now());
+        deptMapper.insert(dept);
     }
 }

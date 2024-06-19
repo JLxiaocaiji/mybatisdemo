@@ -135,7 +135,7 @@ select job, count(*) from  tb_emp where entrydate <= '2015-01-01' group by job  
 select * from tb_emp order by entrydate, update_time desc;
 
 # 分页查询
-# 1. 查询 第3页 员工数据, 每页展示5条记录
+# 1. 查询 第3页 员工数据, 每页展示5条记录( 10 为 0~4, 5~9, 10...), 下面的 10 为起始索引, (页码 -1)*每页记录数
 select * from tb_emp limit 10, 5;
 
 # 示例： 列表条件查询

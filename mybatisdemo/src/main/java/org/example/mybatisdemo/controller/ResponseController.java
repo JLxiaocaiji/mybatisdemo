@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @RestController
+// 可通过 @RequestMapping("/xxx") 提取公共路径;
 public class ResponseController {
     @RequestMapping("/hello")
     public String hello() {

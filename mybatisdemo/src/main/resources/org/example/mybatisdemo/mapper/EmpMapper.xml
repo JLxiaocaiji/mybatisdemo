@@ -25,9 +25,9 @@
 </select>
 
 
-<!--mybatis在 xml 中的动态sql: https://mybatis.net.cn/dynamic-sql.html-->
+<!--mybatis在 xml 中的动态sql: https://mybatis.net.cn/dynamic-sql.html -->
 
-<!--mybatis sql复用 https://mybatis.net.cn/sqlmap-xml.html-->
+<!--mybatis sql复用 https://mybatis.net.cn/sqlmap-xml.html -->
 <sql id="commonSelect">
     select id, username, password, name, gender, image, job, entrydate, dept_id,
            create_time, update_time from emp;

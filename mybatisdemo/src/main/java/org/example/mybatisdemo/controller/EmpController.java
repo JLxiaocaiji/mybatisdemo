@@ -14,6 +14,7 @@ import java.util.List;
 import org.example.mybatisdemo.utils.XmlParserUtils;
 
 @RestController
+// 可通过 @RequestMapping("/xxx") 提取公共路径;
 public class EmpController {
     /*
     @RequestMapping("/listEmp")

@@ -3,15 +3,14 @@ package org.example.mybatisdemo.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import org.example.mybatisdemo.pojo.User;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
+@RestController
+// 可通过 @RequestMapping("/xxx") 提取公共路径;
 public class RequestController {
     // 原始方式
     @RequestMapping("/simpleParam")
@@ -33,7 +32,7 @@ public class RequestController {
     }
 
     // 1. 简单参数
-    // springboot 若方法形参和请求参数名不匹配，可使用 @RequestParam 完成映射
+    // springboot 若方法形参和请求参数名不匹配，可使用 @RequestParam 完成映射, @RequestParam 设置默认值
     /*
     @RequestParam 的 required 属性默认为 true,
      */

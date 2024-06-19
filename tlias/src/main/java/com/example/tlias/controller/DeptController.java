@@ -55,3 +55,16 @@ public class DeptController {
         return Result.success();
     }
 }
+
+/*
+上面的可通过
+
+@RestController
+@RequestMapping("/depts")
+public class DeptController {
+
+}
+提取公共路径
+
+其覆盖的可以省略公共方法
+ */

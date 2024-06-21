@@ -1,5 +1,6 @@
 package com.example.tlias.service;
 
+import com.example.tlias.pojo.Emp;
 import com.example.tlias.pojo.PageBean;
 
 import java.time.LocalDate;
@@ -28,4 +29,10 @@ public interface EmpService {
      * @param ids
      */
     void delete(List<Integer> ids);
+
+    /**
+     * 新增员工
+     * @param emp
+     */
+    void save(Emp emp);
 }

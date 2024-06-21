@@ -1,6 +1,7 @@
 package com.example.tlias.mapper;
 
 import com.example.tlias.pojo.Emp;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -41,5 +42,13 @@ public interface EmpMapper {
      * 批量删除
      * @param ids
      */
-    public void delete(List<Integer> ids);
+    public void delete(@Param("ids") List<Integer> ids);
+
+    /**
+     * 新增员工
+     * @param emp
+     */
+    @Insert("insert into emp( username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time) " +
+            "values(#{username},#{password},#{name},#{gender},#{image},#{job},#{entrydate},#{deptId},#{createTime},#{updateTime})")
+    public void insert(Emp emp);
 }

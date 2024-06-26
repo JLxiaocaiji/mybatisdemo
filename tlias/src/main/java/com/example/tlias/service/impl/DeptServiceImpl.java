@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class DeptServiceImpl implements DeptService {
 
-    // service 中不能实现对数据库的各种操作， 需要调用 mapper 中的接口
+    // 注入 mapper,service 中不能实现对数据库的各种操作， 需要调用 mapper 中的接口
     @Autowired
     private DeptMapper deptMapper;
 

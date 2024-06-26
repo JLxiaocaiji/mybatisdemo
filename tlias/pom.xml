@@ -36,6 +36,13 @@
             <version>1.18.30</version>
         </dependency>
 
+        <!--ali云-->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.17.4</version>
+        </dependency>
+
         <!--pageHelper 分页插件依赖-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>

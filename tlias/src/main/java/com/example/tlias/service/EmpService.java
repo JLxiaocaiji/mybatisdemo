@@ -35,4 +35,8 @@ public interface EmpService {
      * @param emp
      */
     void save(Emp emp);
+
+    Emp getById(Integer id);
+
+    void update(Emp emp);
 }

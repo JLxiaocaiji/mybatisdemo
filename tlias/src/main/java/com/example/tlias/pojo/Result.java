@@ -15,11 +15,12 @@ public class Result {
     public static Result success() {
         return new Result(1, "success", null);
     }
+
     public static Result success(Object data) {
         return new Result(1, "success", data);
     }
 
     public static Result error( String msg) {
-        return new Result(0, msg, null);
+        return new Result( 0, msg, null);
     }
 }

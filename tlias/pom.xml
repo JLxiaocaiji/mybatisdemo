@@ -43,6 +43,12 @@
             <version>3.17.4</version>
         </dependency>
 
+        <!--自定识别被 configuration properties 这个注解标识的 bean 对象-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+
         <!--pageHelper 分页插件依赖-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>

@@ -52,7 +52,7 @@ public class DeptController {
         log.info("新增部门: {}", dept);
         // 调用 service
         deptService.add(dept);
-        return Result.success(deptList);
+        return Result.success();
     }
 }
 

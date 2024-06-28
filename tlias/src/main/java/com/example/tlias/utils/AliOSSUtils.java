@@ -24,6 +24,7 @@ public class AliOSSUtils {
 //    @Value("${aliyun.oss.bucketName}")
 //    private String bucketName ;
 
+    // 注入 bean 对象，并需要调用其 get 方法
     @Autowired
     private AliOSSProperties aliOSSProperties;
 
@@ -31,7 +32,7 @@ public class AliOSSUtils {
      * 实现上传图片到OSS
      */
     public String upload(MultipartFile file) throws IOException {
-        //获取阿里云OSS参数
+        //获取阿里云OSS参数， 分别调用 get 方法
         String endpoint = aliOSSProperties.getEndpoint();
         String accessKeyId = aliOSSProperties.getAccessKeyId();
         String accessKeySecret = aliOSSProperties.getAccessKeySecret();

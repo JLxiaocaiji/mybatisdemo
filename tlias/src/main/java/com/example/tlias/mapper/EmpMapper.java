@@ -58,4 +58,12 @@ public interface EmpMapper {
 
     // 修改
     public void update(Emp emp);
+
+    /**
+     * 查询员工
+     * @param emp
+     * @return
+     */
+    @Select("select * from emp where username = #{username} and password = #{password}")
+    Emp getByUserNameAndPassword(Emp emp);
 }

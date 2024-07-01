@@ -375,6 +375,9 @@ server:
    address: 127.0.0.1
 ```
 
+Filter 和 Interceptor
+- 接口规范不同：过滤器要实现 Filter 接口，拦截器要实现 HandleInterceptor 接口；
+- 拦截范围不同：过滤器 Filter 会拦截所有资源，Interceptor 只会拦截 spring 环境中的资源;
 
 idea 快捷键 
 多行选中： alt + 鼠标左键;

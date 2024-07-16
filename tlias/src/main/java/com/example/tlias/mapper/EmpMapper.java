@@ -1,10 +1,7 @@
 package com.example.tlias.mapper;
 
 import com.example.tlias.pojo.Emp;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -66,4 +63,11 @@ public interface EmpMapper {
      */
     @Select("select * from emp where username = #{username} and password = #{password}")
     Emp getByUserNameAndPassword(Emp emp);
+
+    /**
+     * 根据部门 ID 删除该部门下的所有员工
+     * @param deptId
+     */
+    @Delete("delete from emp where dept_id = #{deptId}")
+    void deleteByDeptId( Integer deptId );
 }

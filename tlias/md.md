@@ -388,6 +388,10 @@ public class GlobalExceptionHandler {
   ex
 ```
 
+##### Spring 注解 @transition
+- 可用在 service 的方法，类，接口上
+- 将当前方法交给 spring 进行事务管理，方法执行前开启事务；成功执行完毕，提交事务；出现异常，回滚事务
+
 idea 快捷键 
 多行选中： alt + 鼠标左键;
 

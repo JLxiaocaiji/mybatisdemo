@@ -3,6 +3,8 @@ package com.example.tlias.service.impl;
 import com.example.tlias.mapper.DeptMapper;
 import com.example.tlias.mapper.EmpMapper;
 import com.example.tlias.pojo.Dept;
+import com.example.tlias.pojo.DeptLog;
+import com.example.tlias.service.DeptLogService;
 import com.example.tlias.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,13 +30,28 @@ public class DeptServiceImpl implements DeptService {
         return deptMapper.list();
     }
 
-    @Transactional  // spring 事务管理
+    @Autowired
+    private DeptLogService deptLogService;
+
+    @Transactional(rollbackFor = Exception.class)  // spring 事务管理
     @Override
-    public void delete(Integer id) {
-        // 删除部门
-        deptMapper.deleteById(id);
-        // 删除该部门下的员工
-        empMapper.deleteByDeptId(id);
+    public void delete(Integer id)  {
+        try {
+            // 删除部门
+            deptMapper.deleteById(id);
+
+            int i = 1/ 0;
+
+            // 删除该部门下的员工
+            empMapper.deleteByDeptId(id);
+        } finally {
+            DeptLog deptLog = new DeptLog();
+            deptLog.setCreateTime(LocalDateTime.now());
+            deptLog.setDescription("执行了解散部门的操作，此次解散的是" +id + "号部门");
+            deptLogService.insert(deptLog);
+        }
+
+
     }
 
 

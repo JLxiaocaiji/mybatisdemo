@@ -391,6 +391,9 @@ public class GlobalExceptionHandler {
 ##### Spring 注解 @transition
 - 可用在 service 的方法，类，接口上
 - 将当前方法交给 spring 进行事务管理，方法执行前开启事务；成功执行完毕，提交事务；出现异常，回滚事务
+- 参数1：rollBackFor 默认情况下，只有 RuntimeException 才回滚异常。 rollbackfor 属性用于控制出现何种类型的异常，回滚事务. @Transactional(rollbackFor = Exception.class)
+- 参数2：propagation: 事务传播行为，当一个事务方法被另一个事务方法调用时，该事务方法该如何进行事务控制
+  * propagation = REQUIRED 默认,有则加入，无则创建新事务； propagation = REQUIRED_NEW: 需要新事物，无论有无均创建；当我们不希望事务之间相互影响时，可以使用该传播行为。比如：下订单前需要记录日志，不论订单保存成功与否，都需要保证日志记录能够记录成功
 
 idea 快捷键 
 多行选中： alt + 鼠标左键;

@@ -395,6 +395,13 @@ public class GlobalExceptionHandler {
 - 参数2：propagation: 事务传播行为，当一个事务方法被另一个事务方法调用时，该事务方法该如何进行事务控制
   * propagation = REQUIRED 默认,有则加入，无则创建新事务； propagation = REQUIRED_NEW: 需要新事物，无论有无均创建；当我们不希望事务之间相互影响时，可以使用该传播行为。比如：下订单前需要记录日志，不论订单保存成功与否，都需要保证日志记录能够记录成功
 
+
+##### AOP： aspect oriented programming 面向切面编程，面向特定方法编程
+- 连接点： JointPoint 可以被AOP控制的方法
+- 通知： Advice， 指重复的逻辑，即共性方法
+- 切入点： PointCut 匹配连接点的条件，指示作用范围的表达式，通知仅会在切入点方法执行时被应用;
+- 切面： Aspect, 描述通知与切入点的对应关系， 指在切面类中的 代码,即上面的 通知 + 切入点;
+
 idea 快捷键 
 多行选中： alt + 鼠标左键;
 

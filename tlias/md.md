@@ -401,6 +401,41 @@ public class GlobalExceptionHandler {
 - 通知： Advice， 指重复的逻辑，即共性方法
 - 切入点： PointCut 匹配连接点的条件，指示作用范围的表达式，通知仅会在切入点方法执行时被应用;
 - 切面： Aspect, 描述通知与切入点的对应关系， 指在切面类中的 代码,即上面的 通知 + 切入点;
+![img.png](img.png)
+
+###### AOP 通知类型
+![img_1.png](img_1.png)
+
+##### bean 的 3 种获取方法
+1. name 示例: (DeptController) applicationContext.getBean("deptController")
+2. 类型 示例: applicationContext.getBean(DeptController.class);
+3. 根绝 name 和 类型 获取： applicationContext.getBean("deptController", DeptController.class);
+
+##### bean 作用域
+@Lazy                   // 延迟初始化，直到第一次初始化时
+默认singleton的bean，在容器启动时被创建，可以使用@Lazy注解来延迟初始化（延迟到第一次使用时）。
+在 scope 中配置 prototype 的bean： @Scope("prototype")，每一次使用该bean的时候都会创建一个新的实例。
+
+##### @bean 管理第三方 bean
+若 bean 来自第三方，则无法使用 @Component 及衍生注解声明 bean， 需要使用 @bean;
+通过 return new 构造新对象，交给 IOC 管理， 例：
+```
+public class SpringbootWebConfig2Application {
+  @Bean
+  public SAXReader saxReader() {
+    return new SAXReader();
+  }
+}
+```
+可以在 config 文件夹中同一配置
+通过@Bean注解的name或value属性可以声明bean的名称，如果不指定，默认bean的名称就是方法名。
+如果第三方bean需要依赖其它bean对象，直接在bean定义方法中设置形参即可，容器会根据类型自动装配
+
+
+##### springboot 原理
+起步依赖：只需传入依赖，则其依赖的相应其他依赖可以通过依赖传递自动得到，可以简化构建配置；
+
+自动配置：当spring容器启动后，一些配置类、bean对象就自动存入到了IOC容器中，不需要我们手动去声明，从而简化了开发，省去了繁琐的配置操作
 
 idea 快捷键 
 多行选中： alt + 鼠标左键;

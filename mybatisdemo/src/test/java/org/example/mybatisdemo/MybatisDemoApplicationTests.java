@@ -77,11 +77,28 @@ class MybatisDemoApplicationTests {
 //    }
 
 
-    @Autowired
+    @Autowired n
     private EmpMapper empMapper;
     @Test
     public void testDelete() {
         empMapper.delete(17);
 
+    }
+
+    // IOC 容器对象
+    @Autowired
+    private ApplicationContext applicationContext;
+
+    @Test
+    public void testGetBean() {
+        // 根据 bean 名称获取
+        DeptController bean1 = (DeptController) applicationContext.getBean("deptController");
+        System.out.println(bean1);
+
+        // 根据 bean 的类型获取
+        DeptController bean2 = applicationContext.getBean(DeptController.class);
+        System.out.println(bean2);
+
+        // 根据 bean 的名称及类型获取
     }
 }

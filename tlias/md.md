@@ -436,6 +436,12 @@ public class SpringbootWebConfig2Application {
 起步依赖：只需传入依赖，则其依赖的相应其他依赖可以通过依赖传递自动得到，可以简化构建配置；
 
 自动配置：当spring容器启动后，一些配置类、bean对象就自动存入到了IOC容器中，不需要我们手动去声明，从而简化了开发，省去了繁琐的配置操作
+- idea 自动配置原理：
+  1. @ComponentScan 组件扫描
+  2. @Import 导入，@Import 导入的类 会被
+  3. 使用 @EnableXxxx 注解，封装 @Import 注解
+
+
 
 idea 快捷键 
 多行选中： alt + 鼠标左键;

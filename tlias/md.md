@@ -23,7 +23,7 @@ public class EmpServiceA implements EmpService{}
 
 @Autowired: 运行时，IOC融合其会提供该类型的 bean 对象，并赋值给该变量 - 依赖注入
 @Autowired
-private EmpService empService;
+private EmpService empService;@
 ```
 
 Bean 的声明,
@@ -442,6 +442,80 @@ public class SpringbootWebConfig2Application {
   3. 使用 @EnableXxxx 注解，封装 @Import 注解
 
 
+##### 项目继承关系实现 若父子有同一个依赖的不同版本，则以子工程为准
+1. 父工程示例
+```
+<parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.7.5</version>
+</parent>
+
+<groupId>com.itheima</groupId>
+<artifactId>tlias-parent</artifactId>
+<version>1.0-SNAPSHOT</version>
+<packing>pom</packing>  // 打包的时候指定 pom 文件,不指定则默认为 jar 包
+```
+2. 子工程示例， 需要在 pom 文件中，配置继承关系
+```
+<parent>
+  <groupId>org.example</groupId>
+  <artifactId>tlias-parent</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <relativePath>../tlias-parent/pom.xml</relativePath>  // relativePath 指定父工程文件
+</parent>
+```
+
+步骤：
+1.创建maven模块 tlias-parent ，该工程为父工程，设置打包方式pom(默认jar)
+2.在子工程的pom.xml文件中，配置继承关系;
+3.在父工程中配置各个工程共有的依赖（子工程会自动继承父工程的依赖）;
+
+dependencyManagement 在父工程中提前 版本锁定
+
+``` 
+// 在 properties 中配置属性
+<properties>
+  <lombok.version>1.18.24</lombok.version>  
+</properties>
+```
+``` 
+// 在 dependency 中使用
+<dependencies>
+  <dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>${lombok.version}</version>
+  </dependency>
+</dependencies>
+```
+
+```
+// modules 在需要聚合的工程中聚合
+<modules>
+    <module>../tlias-pojo</module>
+    <module>../tlias-utils</module>
+    <module>../tlias-management</module>
+</modules>
+```
+
+私服central 分为 release 和 snapshot 2个仓库,只要不是 SNAPSHOT 都会上传到 release 库中
+<version>1.0-RELEASE</version>
+
+pom 中配置 上传/发布(点击 deploy) 地址
+```
+<distributionManagement>
+  <!-- release 版本的发布地址 -->
+  <repository>
+    <id>maven-release</id>
+    <url>http://192.168.150.101:8081/repository/maven-releases/</url>
+  </repository>
+  
+  <!-- snap 版本的发布地址 -->
+  <id>maven-snapshots</id>
+  <url>http://192.168.150.101:8081/repository/maven-snapshots/</url>
+</distributionManagement>
+```
 
 idea 快捷键 
 多行选中： alt + 鼠标左键;
